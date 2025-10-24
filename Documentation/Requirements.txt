@@ -1,9 +1,13 @@
+Lien vers BDD ncbi
+https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA586837&o=acc_s%3Aa
+
 Tuto SRA toolkit
 https://bioinfo-fr.net/telecharger-des-donnees-de-sequencage-sur-le-ncbi-pour-les-debutants
 Lien vers GitHub SRA toolkit
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
-Lien vers BDD ncbi
-https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA586837&o=acc_s%3Aa
+
+Lien vers trimmeGallore : 
+https://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/
 
 | Étape                      | Logiciel                            | Version                             | Fonction                                                  |
 | -------------------------- | ----------------------------------- | ----------------------------------- | --------------------------------------------------------- |
