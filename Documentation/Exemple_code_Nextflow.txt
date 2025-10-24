@@ -1,0 +1,93 @@
+#!/usr/bin/env nextflow
+
+// Channel initiale : les fichiers FASTQ
+reads_ch = Channel.fromPath('data/*.fastq')
+
+// Étape 1 : QC
+process QC {
+    container 'biocontainers/fastqc:v0.11.9_cv8'
+
+    input:
+    path read from reads_ch
+
+    output:
+    path "*.zip" into qc_results
+
+    script:
+    """
+    fastqc $read
+    """
+}
+
+// Étape 2 : Alignement
+process Align {
+    container 'biocontainers/bwa:v0.7.17_cv1'
+
+    input:
+    path qc_file from qc_results
+
+    output:
+    path "*.bam" into align_out
+
+    script:
+    """
+    bwa mem genome.fa $qc_file > result.bam
+#!/usr/bin/env nextflow
+
+// Channel initiale : les fichiers FASTQ
+reads_ch = Channel.fromPath('data/*.fastq')
+
+// Étape 1 : QC
+process QC {
+    container 'biocontainers/fastqc:v0.11.9_cv8'
+
+    input:
+    path read from reads_ch
+
+    output:
+    path "*.zip" into qc_results
+
+    script:
+    """
+    fastqc $read
+    """
+}
+
+// Étape 2 : Alignement
+process Align {
+    container 'biocontainers/bwa:v0.7.17_cv1'
+
+    input:
+    path qc_file from qc_results
+
+    output:
+    path "*.bam" into align_out
+
+    script:
+    """
+    bwa mem genome.fa $qc_file > result.bam
+    """
+}
+
+// Étape 3 : Comptage
+process Count {
+    container 'biocontainers/samtools:v1.11-4-deb_cv1'
+
+    input:
+    path bam_file from align_out
+
+    output:
+    path "counts.txt"
+
+    script:
+    """
+    samtools idxstats $bam_file > counts.txt
+    """
+}
+
+workflow {
+    QC()
+    Align()
+    Count()
+}
+
