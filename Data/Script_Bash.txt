@@ -1,0 +1,7 @@
+
+# Se mettre dans le bon dossier de travail, chemin pour aller executer la commande
+while read srr; do
+  ~/OneDrive/APT/IODAA/Repgrog\ Hackathon/sratoolkit.3.2.1-win64/sratoolkit.3.2.1-win64/bin/prefetch $srr
+done < srr_list.txtls
+
+# Convertir les fichiers télécharger .SRA en fastqc
