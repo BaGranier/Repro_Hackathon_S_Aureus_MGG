@@ -1,0 +1,16 @@
+Tuto SRA toolkit
+https://bioinfo-fr.net/telecharger-des-donnees-de-sequencage-sur-le-ncbi-pour-les-debutants
+Lien vers GitHub SRA toolkit
+https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
+Lien vers BDD ncbi
+https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA586837&o=acc_s%3Aa
+
+| Étape                      | Logiciel                            | Version                             | Fonction                                                  |
+| -------------------------- | ----------------------------------- | ----------------------------------- | --------------------------------------------------------- |
+| Nettoyage / trimming       | *Cutadapt*                        | *1.11*                            | Supprime les adaptateurs et les bases de mauvaise qualité |
+| Alignement                 | *Bowtie*                          | *0.12.7*                          | Aligne les lectures sur le génome de référence            |
+| Comptage des gènes         | *featureCounts* (Subread package) | *1.4.6-p3*                        | Associe les lectures aux gènes (compte par feature)       |
+| Analyse statistique        | *R*                               | *3.4.1*                           | Environnement statistique                                 |
+| Différentiel d’expression  | *DESeq2*                          | *1.16*                            | Test de l’expression différentielle                       |
+| Enrichissement fonctionnel | *EnrichmentBrowser*               | *2.14.3*                          | Analyse d’enrichissement de gènes KEGG                    |
+| Pipeline global            | *Sequana RNA-seq*                 | (non précisé, probablement 0.6–0.7) | Pipeline automatique d’analyse RNA-seq                    |
