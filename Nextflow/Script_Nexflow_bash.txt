@@ -1,0 +1,2 @@
+docker build -t local/sra_toolkit_docker -f Dockerfile_SRA .
+nextflow run main_SRA.nf -with-docker
