@@ -1,16 +1,21 @@
+# Utiliser Ubuntu 22.04 comme base
 FROM ubuntu:22.04
 
 LABEL maintainer="pj.gouze@gmail.com"
-LABEL description="Container Docker pour le SRA Toolkit"
+LABEL description="Container Docker pour le SRA Toolkit avec Java"
 
-# Installer les dépendances
+# Éviter les prompts interactifs d’apt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Installer les dépendances et Java
 RUN apt-get update && apt-get install -y \
     wget \
     tar \
     gzip \
+    openjdk-11-jre \
     && rm -rf /var/lib/apt/lists/*
 
-# Télécharger et installer SRA Toolkit
+# Télécharger et installer le SRA Toolkit
 RUN wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz && \
     tar -xzf sratoolkit.current-ubuntu64.tar.gz && \
     mkdir -p /opt/sratoolkit && \
@@ -21,9 +26,9 @@ RUN wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-u
 # Définir le répertoire de travail
 WORKDIR /data
 
-# Monter un volume pour partager des fichiers
+# Monter un volume pour le partage de données
 VOLUME ["/data"]
 
-# Commande par défaut pour tester l’installation
-CMD ["fastq-dump", "--version"]
+# Vérifier les versions installées au démarrage
+CMD ["bash", "-c", "java -version && fastq-dump --version"]
 
