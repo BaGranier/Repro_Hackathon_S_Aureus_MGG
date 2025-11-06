@@ -1,22 +1,29 @@
 FROM ubuntu:14.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+WORKDIR /opt
+
+# Installer dépendances (avec anciens compilateurs)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    wget \
-    make \
-    unzip \
-    zlib1g-dev gcc-4.4 g++-4.4\
-    && rm -rf /var/lib/apt/lists/*
+      build-essential \
+      wget \
+      unzip \
+      zlib1g-dev \
+      ca-certificates \
+      gcc-4.4 \
+      g++-4.4 \
+      && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/
-RUN wget http://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/bowtie-0.12.7-src.zip/download -0 bowtie-0.12.7-src.zip
-RUN unzip bowtie-0.12.7-src.zip
-RUN rm bowtie-0.12.7-src.zip
+# Télécharger et compiler Bowtie 0.12.7 avec gcc-4.4
+RUN wget -O bowtie-0.12.7-src.zip \
+      https://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/bowtie-0.12.7-src.zip && \
+    unzip bowtie-0.12.7-src.zip && \
+    rm bowtie-0.12.7-src.zip && \
+    cd bowtie-0.12.7 && \
+    make CC=gcc-4.4 CXX=g++-4.4 -j$(nproc) && \
+    ln -sf /opt/bowtie-0.12.7/bowtie /usr/local/bin/bowtie
 
-WORKDIR /opt/bowtie-0.12.7
+WORKDIR /data
+ENTRYPOINT ["bowtie"]
 
-RUN make CC=gcc-4.4 CXX=g++-4.4
-
-ENV PATH="/opt/bowtie-0.12.7:$PATH"
-
-CMD ["bowtie", "--version"]
