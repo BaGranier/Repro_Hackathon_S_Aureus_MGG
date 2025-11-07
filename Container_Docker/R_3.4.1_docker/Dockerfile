@@ -1,14 +1,15 @@
 FROM rocker/r-ver:3.4.1
 
 LABEL maintainer="pj.gouze@gmail.com"
-LABEL description="Image R 3.4.1 basée sur rocker/r-ver"
+LABEL description="R 3.4.1 avec DESeq2 v1.7 depuis archive"
 
-# Définir le répertoire de travail
 WORKDIR /app
 
-# (Optionnel) Installer des packages R
+# Installer ggplot2
 RUN R -e "install.packages('ggplot2', repos='https://cloud.r-project.org')"
 
-# Commande par défaut
+# Installer DESeq2 v1.7 depuis l'archive Bioconductor
+RUN R -e "install.packages('https://bioconductor.org/packages/3.3/bioc/src/contrib/DESeq2_1.7.0.tar.gz', repos=NULL, type='source')"
+
 CMD ["R"]
 
