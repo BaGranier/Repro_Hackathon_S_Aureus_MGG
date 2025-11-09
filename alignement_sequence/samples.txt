@@ -1,0 +1,8 @@
+sample    condition
+SRR10379721    Control
+SRR10379722    Control
+SRR10379723    Control
+SRR10379724    Persister
+SRR10379725    Persister
+SRR10379726    Persister
+
