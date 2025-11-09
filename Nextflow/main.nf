@@ -1,22 +1,24 @@
 nextflow.enable.dsl=2
 
-process GET_SRA {
-    tag "$sra_id"
-    publishDir params.outdir, mode: 'copy'
+process DOWNLOAD_SRA {
+
+    container 'pierrejeangouze/sra_toolkit'
 
     input:
-        val sra_id
+    val srr_id
 
     output:
-        path "*.fastq.gz", emit: sra_fastq_files
+    path "*.fastq.gz"
 
     script:
-        """
-        echo "=== Téléchargement du fichier SRA : ${sra_id} ==="
-        fasterq-dump --threads ${task.cpus} --progress ${sra_id}
-        gzip *.fastq
-        """
+    """
+    echo "Telechargement de l'echantillon : ${srr_id}"
+    fasterq-dump --threads 4 --progress ${srr_id}
+    gzip *.fastq
+    """
 }
 
-
-
+workflow {
+    main:
+        DOWNLOAD_SRA("SRR10379723")
+}
