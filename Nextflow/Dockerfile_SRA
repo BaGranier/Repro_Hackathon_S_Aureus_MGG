@@ -1,0 +1,29 @@
+FROM ubuntu:22.04
+
+LABEL maintainer="pj.gouze@gmail.com"
+LABEL description="Container Docker pour le SRA Toolkit + Java"
+
+# Installer les dépendances nécessaires
+RUN apt-get update && apt-get install -y \
+    wget \
+    tar \
+    gzip \
+    openjdk-17-jre-headless \
+    && rm -rf /var/lib/apt/lists/*
+
+# Télécharger et installer SRA Toolkit
+RUN wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz && \
+    tar -xzf sratoolkit.current-ubuntu64.tar.gz && \
+    mkdir -p /opt/sratoolkit && \
+    mv sratoolkit.*/* /opt/sratoolkit/ && \
+    ln -s /opt/sratoolkit/bin/* /usr/local/bin/ && \
+    rm -rf sratoolkit.* sratoolkit.current-ubuntu64.tar.gz
+
+# Définir le répertoire de travail
+WORKDIR /data
+
+# Monter un volume pour partager des fichiers
+VOLUME ["/data"]
+
+# Commande par défaut
+CMD ["fastq-dump", "--version"]
