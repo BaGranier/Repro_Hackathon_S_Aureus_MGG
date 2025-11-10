@@ -1,9 +1,8 @@
-FROM ubuntu:14.04
+FROM --platform=linux/amd64 ubuntu:14.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /opt
 
-# Installer dépendances (avec anciens compilateurs)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       build-essential \
@@ -15,9 +14,8 @@ RUN apt-get update && \
       g++-4.4 \
       && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Télécharger et compiler Bowtie 0.12.7 avec gcc-4.4
 RUN wget -O bowtie-0.12.7-src.zip \
-      https://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/bowtie-0.12.7-src.zip && \
+      "https://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/bowtie-0.12.7-src.zip/download" && \
     unzip bowtie-0.12.7-src.zip && \
     rm bowtie-0.12.7-src.zip && \
     cd bowtie-0.12.7 && \
