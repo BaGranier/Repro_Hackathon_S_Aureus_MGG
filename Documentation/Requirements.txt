@@ -16,5 +16,4 @@ https://sourceforge.net/projects/bowtie-bio/files/bowtie/0.12.7/
 | Comptage des gènes         | *featureCounts* (Subread package) | *1.4.6-p3*                        | Associe les lectures aux gènes (compte par feature)       |
 | Analyse statistique        | *R*                               | *3.4.1*                           | Environnement statistique                                 |
 | Différentiel d’expression  | *DESeq2*                          | *1.16*                            | Test de l’expression différentielle                       |
-| Enrichissement fonctionnel | *EnrichmentBrowser*               | *2.14.3*                          | Analyse d’enrichissement de gènes KEGG                    |
-| Pipeline global            | *Sequana RNA-seq*                 | (non précisé, probablement 0.6–0.7) | Pipeline automatique d’analyse RNA-seq                    |
+
