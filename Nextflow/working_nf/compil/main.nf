@@ -32,7 +32,6 @@ process TRIM_ALL_READS {
 
     output:
     path "*.fq.gz"
-    path "*report.txt", optional: true
 
     script:
     """
@@ -127,5 +126,5 @@ workflow {
     ref = DOWNLOAD_REFERENCE()
     index = INDEX_CREATION(ref[0]).index_dir // le premier élément de sortie = reference.fasta
     fastq_ch = TRIM_ALL_READS(fastq_files)
-    #ALIGN(fastq_ch, index)
+    ALIGN(fastq_ch, index)
 }
