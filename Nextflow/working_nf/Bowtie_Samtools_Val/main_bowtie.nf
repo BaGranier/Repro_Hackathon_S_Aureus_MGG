@@ -1,0 +1,89 @@
+nextflow.enable.dsl=2
+
+//--------------------------------------------------------------
+// 1. DOWNLOAD REFERENCE
+//--------------------------------------------------------------
+process DOWNLOAD_REFERENCE {
+    tag "download_ref"
+
+    output:
+    path "reference.fasta"
+    path "reference.gff"
+
+    script:
+    """
+    wget -q -O reference.fasta "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=CP000253.1&rettype=fasta"
+    wget -q -O reference.gff "https://www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?db=nuccore&report=gff3&id=CP000253.1"
+    """
+}
+
+
+
+//--------------------------------------------------------------
+// 2. BOWTIE INDEX CREATION (all index files in a folder)
+//--------------------------------------------------------------
+process INDEX_CREATION {
+    tag "index"
+    container 'vmichelet/bowtie:0.12.7-samtools'
+    containerOptions '--entrypoint ""'
+
+    input:
+    path fasta_file
+
+    output:
+    path "ref_index", emit: index_dir
+
+    script:
+    """
+    mkdir ref_index
+    bowtie-build ${fasta_file} ref_index/ref_index
+    """
+}
+
+
+
+//--------------------------------------------------------------
+// 3. ALIGN READS USING PROCESS SUBSTITUTION + PIPED SORT
+//--------------------------------------------------------------
+process ALIGN {
+    tag "align"
+    container 'vmichelet/bowtie:0.12.7-samtools'
+    containerOptions '--entrypoint ""'
+    cpus 4
+
+    input:
+    path fastq_file
+    path index_dir
+
+    output:
+    path "*.bam"
+    path "*.bam.bai"
+
+    script:
+    """
+    bowtie -p ${task.cpus} -S ${index_dir}/ref_index <(gunzip -c ${fastq_file}) \
+        | samtools sort -@ ${task.cpus} -o ${fastq_file.simpleName}.bam
+
+    samtools index ${fastq_file.simpleName}.bam
+    """
+}
+
+
+
+//--------------------------------------------------------------
+// 4. WORKFLOW CONNECTIONS
+//--------------------------------------------------------------
+workflow {
+
+    // download reference
+    ref = DOWNLOAD_REFERENCE()
+
+    // build index using FASTA
+    index = INDEX_CREATION(ref[0]).index_dir
+
+    // input FASTQ files
+    fastq_ch = Channel.fromPath("*_trimmed.fq.gz")
+
+    // run alignment
+    ALIGN(fastq_ch, index)
+}
