@@ -5,7 +5,7 @@ process DOWNLOAD_SRA {
     tag "$srr_id"
     container 'pierrejeangouze/sra_toolkit'
     errorStrategy 'retry'
-    maxRetries 3
+    maxRetries 2
 
     input:
     val srr_id
@@ -16,19 +16,8 @@ process DOWNLOAD_SRA {
 
     script:
     """
-    echo "Telechargement de l'echantillon : ${srr_id}"
-    echo "----------------------------------------------"
-
-    # Telechargement
     fasterq-dump --threads 12 --split-files --progress ${srr_id}
-
-    # Compression
     gzip *.fastq
-
-    # Deplacement des fichiers dans le dossier de sortie Nextflow
-    mv *.fastq.gz ./
-
-    echo "Telechargement termine : ${srr_id}"
     """
 }
     
@@ -37,8 +26,7 @@ workflow {
 
     // Liste definie directement ici
     srr_list = [
-        'SRR10379723',
-        'SRR10379726'
+        'SRR10379723'
     ]
 
     // Afficher la liste utilisee
