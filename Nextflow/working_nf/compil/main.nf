@@ -11,7 +11,7 @@ process DOWNLOAD_SRA {
     val srr_id
 
     output:
-    path "${srr_id}.fastq.gz"
+    path "*.fastq.gz"
 
     script:
     """
@@ -40,6 +40,9 @@ process TRIM_ALL_READS {
     """
 }
 
+//--------------------------------------------------------------
+// 1. DOWNLOAD REFERENCE
+//--------------------------------------------------------------
 process DOWNLOAD_REFERENCE {
     tag "download_ref"
 
@@ -54,20 +57,54 @@ process DOWNLOAD_REFERENCE {
     """
 }
 
+
+
+//--------------------------------------------------------------
+// 2. BOWTIE INDEX CREATION (all index files in a folder)
+//--------------------------------------------------------------
 process INDEX_CREATION {
-    tag "INDEX_CREATION"
-    container 'bagranier/bowtie:0.12.7-fixed'
+    tag "index"
+    container 'vmichelet/bowtie:0.12.7-samtools'
     containerOptions '--entrypoint ""'
 
     input:
     path fasta_file
 
     output:
-    path "ref_index.*"
+    path "ref_index", emit: index_dir
 
     script:
     """
-    bowtie-build $fasta_file ref_index
+    mkdir ref_index
+    bowtie-build ${fasta_file} ref_index/ref_index
+    """
+}
+
+
+
+//--------------------------------------------------------------
+// 3. ALIGN READS USING PROCESS SUBSTITUTION + PIPED SORT
+//--------------------------------------------------------------
+process ALIGN {
+    tag "align"
+    container 'vmichelet/bowtie:0.12.7-samtools'
+    containerOptions '--entrypoint ""'
+    cpus 4
+
+    input:
+    path fastq_file
+    path index_dir
+
+    output:
+    path "*.bam"
+    path "*.bam.bai"
+
+    script:
+    """
+    bowtie -p ${task.cpus} -S ${index_dir}/ref_index <(gunzip -c ${fastq_file}) \
+        | samtools sort -@ ${task.cpus} -o ${fastq_file.simpleName}.bam
+
+    samtools index ${fastq_file.simpleName}.bam
     """
 }
 
@@ -88,6 +125,7 @@ workflow {
     // Lancer une tache pour chaque SRR
     fastq_files = DOWNLOAD_SRA(srr_ch)
     ref = DOWNLOAD_REFERENCE()
-    INDEX_CREATION(ref[0]) // le premier élément de sortie = reference.fasta
-    TRIM_ALL_READS(fastq_files)
+    index = INDEX_CREATION(ref[0]).index_dir // le premier élément de sortie = reference.fasta
+    fastq_ch = TRIM_ALL_READS(fastq_files)
+    #ALIGN(fastq_ch, index)
 }
