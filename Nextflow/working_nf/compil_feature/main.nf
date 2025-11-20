@@ -96,7 +96,6 @@ process ALIGN {
 
     output:
     path "*.bam"
-    path "*.bam.bai"
 
     script:
     """
@@ -132,10 +131,14 @@ process FEATURECOUNTS {
 
 
 workflow {
-
     // Liste definie directement ici
     srr_list = [
-        'SRR10379723'
+        'SRR10379723',
+        'SRR10379724',
+        'SRR10379725',
+        'SRR10379726',
+        'SRR10379721',
+        'SRR10379722'
     ]
 
     // Afficher la liste utilisee

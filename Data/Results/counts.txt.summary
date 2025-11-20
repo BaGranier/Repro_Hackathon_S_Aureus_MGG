@@ -1,0 +1,12 @@
+Status	SRR10379726_1_trimmed.bam	SRR10379723_1_trimmed.bam	SRR10379725_1_trimmed.bam	SRR10379722_1_trimmed.bam	SRR10379724_1_trimmed.bam	SRR10379721_1_trimmed.bam
+Assigned	6473815	18728207	26527747	20877434	22609840	24966806
+Unassigned_Ambiguity	258796	663047	871670	745811	728676	877740
+Unassigned_MultiMapping	0	0	0	0	0	0
+Unassigned_NoFeatures	3010237	5129223	8278183	5562665	8501168	7091161
+Unassigned_Unmapped	17278541	15129599	10561553	17014092	15455539	18970001
+Unassigned_MappingQuality	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0
+Unassigned_Secondary	0	0	0	0	0	0
+Unassigned_Nonjunction	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0
