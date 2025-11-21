@@ -1,3 +1,4 @@
 https://bioinfo-fr.net/telecharger-des-donnees-de-sequencage-sur-le-ncbi-pour-les-debutants
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
 https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA586837&o=acc_s%3Aa
+https://aureowiki.med.uni-greifswald.de/download_gene_specific_information
