@@ -1,0 +1,10 @@
+[1] "SRR10379726_1_trimmed.bam" "SRR10379723_1_trimmed.bam"
+[3] "SRR10379722_1_trimmed.bam" "SRR10379725_1_trimmed.bam"
+[5] "SRR10379724_1_trimmed.bam" "SRR10379721_1_trimmed.bam"
+  locus_tag        chr start     end strand
+1      \001 CP000253.1     1 2821361      +
+2      \001 CP000253.1   517    1878      +
+3      \001 CP000253.1   517    1878      +
+4      \001 CP000253.1  2156    3289      +
+5      \001 CP000253.1  2156    3289      +
+6      \001 CP000253.1  3670    3915      +

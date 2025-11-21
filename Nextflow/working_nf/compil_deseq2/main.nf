@@ -427,12 +427,12 @@ process deseq2 {
 workflow {
     // Liste definie directement ici
     srr_list = [
+        'SRR10379721',
+        'SRR10379722',
         'SRR10379723',
         'SRR10379724',
         'SRR10379725',
-        'SRR10379726',
-        'SRR10379721',
-        'SRR10379722'
+        'SRR10379726'
     ]
 
     // Afficher la liste utilisee
@@ -443,7 +443,7 @@ workflow {
 
     // Lancer une tache pour chaque SRR
     fastq_files = DOWNLOAD_SRA(srr_ch)
-    fasta, gff = DOWNLOAD_REFERENCE()
+    (fasta, gff) = DOWNLOAD_REFERENCE()
     index = INDEX_CREATION(fasta)
     fastq_ch = TRIM_ALL_READS(fastq_files)
     bam = ALIGN(fastq_ch, index)

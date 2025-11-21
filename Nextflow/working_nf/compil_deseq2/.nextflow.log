@@ -1,0 +1,567 @@
+Nov-21 13:39:08.715 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+Nov-21 13:39:08.764 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.0
+Nov-21 13:39:08.791 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/grani/nextflow_work/compil_deseq2/nextflow.config
+Nov-21 13:39:08.794 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/grani/nextflow_work/compil_deseq2/nextflow.config
+Nov-21 13:39:08.812 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Nov-21 13:39:08.970 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/grani/.nextflow/plugins; core-plugins: nf-amazon@3.4.1,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.3,nf-k8s@1.2.2,nf-tower@1.17.1,nf-wave@1.16.1
+Nov-21 13:39:08.977 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Nov-21 13:39:08.978 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Nov-21 13:39:08.980 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Nov-21 13:39:08.990 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Nov-21 13:39:09.106 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Nov-21 13:39:09.107 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Nov-21 13:39:09.107 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Nov-21 13:39:09.119 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/grani/.nextflow/secrets/store.json
+Nov-21 13:39:09.121 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@6a12c7a8] - activable => nextflow.secret.LocalSecretsProvider@6a12c7a8
+Nov-21 13:39:09.129 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Nov-21 13:39:09.142 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [magical_easley] DSL2 - revision: 5bd70cc4f8
+Nov-21 13:39:09.178 [main] DEBUG nextflow.Session - Session UUID: 575a6bdb-a7b9-4507-97c3-1818612ffbf9
+Nov-21 13:39:09.178 [main] DEBUG nextflow.Session - Run name: magical_easley
+Nov-21 13:39:09.179 [main] DEBUG nextflow.Session - Executor pool size: 24
+Nov-21 13:39:09.185 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Nov-21 13:39:09.188 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=72; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Nov-21 13:39:09.205 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.10.0 build 10289
+  Created: 22-10-2025 16:26 UTC (18:26 CEST)
+  System: Linux 6.6.87.2-microsoft-standard-WSL2
+  Runtime: Groovy 4.0.28 on OpenJDK 64-Bit Server VM 21.0.8+9-Ubuntu-0ubuntu124.04.1
+  Encoding: UTF-8 (UTF-8)
+  Process: 3316@PC-BA-i [127.0.1.1]
+  CPUs: 24 - Mem: 15.5 GB (14.1 GB) - Swap: 4 GB (4 GB)
+Nov-21 13:39:09.221 [main] DEBUG nextflow.Session - Work-dir: /home/grani/nextflow_work/compil_deseq2/work [ext2/ext3]
+Nov-21 13:39:09.221 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/grani/nextflow_work/compil_deseq2/bin
+Nov-21 13:39:09.227 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Nov-21 13:39:09.232 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Nov-21 13:39:09.233 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Nov-21 13:39:09.259 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Nov-21 13:39:09.266 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 25; maxThreads: 1000
+Nov-21 13:39:09.319 [main] DEBUG nextflow.Session - Session start
+Nov-21 13:39:09.583 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Nov-21 13:39:09.648 [main] INFO  nextflow.script.BaseScript - Liste des echantillons : SRR10379721, SRR10379722, SRR10379723, SRR10379724, SRR10379725, SRR10379726
+Nov-21 13:39:09.671 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:DOWNLOAD_SRA` matches process DOWNLOAD_SRA
+Nov-21 13:39:09.676 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.676 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.682 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Nov-21 13:39:09.688 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=24; memory=15.5 GB; capacity=24; pollInterval=100ms; dumpInterval=5m
+Nov-21 13:39:09.689 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Nov-21 13:39:09.705 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'DOWNLOAD_SRA': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.736 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.736 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.737 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'DOWNLOAD_REFERENCE': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.740 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:INDEX_CREATION` matches process INDEX_CREATION
+Nov-21 13:39:09.741 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.741 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.741 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'INDEX_CREATION': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.743 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:TRIM_ALL_READS` matches process TRIM_ALL_READS
+Nov-21 13:39:09.744 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.745 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.745 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_ALL_READS': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.748 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.748 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.748 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ALIGN': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.762 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:FEATURECOUNTS` matches process FEATURECOUNTS
+Nov-21 13:39:09.763 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.763 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.763 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FEATURECOUNTS': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.771 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:deseq2` matches process deseq2
+Nov-21 13:39:09.772 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-21 13:39:09.772 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-21 13:39:09.772 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'deseq2': maxForks=0; fair=false; array=0
+Nov-21 13:39:09.775 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: ALIGN, DOWNLOAD_SRA, TRIM_ALL_READS, INDEX_CREATION, FEATURECOUNTS, DOWNLOAD_REFERENCE, deseq2
+Nov-21 13:39:09.777 [main] DEBUG nextflow.Session - Igniting dataflow network (8)
+Nov-21 13:39:09.778 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > DOWNLOAD_SRA
+Nov-21 13:39:09.778 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > DOWNLOAD_REFERENCE
+Nov-21 13:39:09.779 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > INDEX_CREATION
+Nov-21 13:39:09.779 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_ALL_READS
+Nov-21 13:39:09.779 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ALIGN
+Nov-21 13:39:09.779 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FEATURECOUNTS
+Nov-21 13:39:09.787 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > deseq2
+Nov-21 13:39:09.788 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_5e26e28f3b92c5cd: /home/grani/nextflow_work/compil_deseq2/main.nf
+Nov-21 13:39:09.789 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Nov-21 13:39:09.789 [main] DEBUG nextflow.Session - Session await
+Nov-21 13:39:09.895 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.897 [Task submitter] INFO  nextflow.Session - [3e/6ccc35] Submitted process > DOWNLOAD_SRA (SRR10379722)
+Nov-21 13:39:09.903 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.904 [Task submitter] INFO  nextflow.Session - [ba/404349] Submitted process > DOWNLOAD_SRA (SRR10379723)
+Nov-21 13:39:09.908 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.909 [Task submitter] INFO  nextflow.Session - [75/66a635] Submitted process > DOWNLOAD_SRA (SRR10379724)
+Nov-21 13:39:09.913 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.913 [Task submitter] INFO  nextflow.Session - [d1/fae1b4] Submitted process > DOWNLOAD_REFERENCE (download_ref)
+Nov-21 13:39:09.916 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.918 [Task submitter] INFO  nextflow.Session - [cc/e50cd3] Submitted process > DOWNLOAD_SRA (SRR10379721)
+Nov-21 13:39:09.922 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.922 [Task submitter] INFO  nextflow.Session - [2b/e3793c] Submitted process > DOWNLOAD_SRA (SRR10379725)
+Nov-21 13:39:09.927 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:09.927 [Task submitter] INFO  nextflow.Session - [ea/7cca22] Submitted process > DOWNLOAD_SRA (SRR10379726)
+Nov-21 13:39:21.295 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: DOWNLOAD_REFERENCE (download_ref); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/d1/fae1b4cd3f768f333640d8f8d22242]
+Nov-21 13:39:21.295 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=72; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Nov-21 13:39:21.322 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:39:21.322 [Task submitter] INFO  nextflow.Session - [2b/e68da1] Submitted process > INDEX_CREATION (index)
+Nov-21 13:39:22.839 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: INDEX_CREATION (index); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e68da1e624c1ae3ac7338fc75b76af]
+Nov-21 13:44:09.881 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 6 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: DOWNLOAD_SRA (SRR10379722); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/3e/6ccc356f3e733aff415b8c0252c438]
+~> TaskHandler[id: 4; name: DOWNLOAD_SRA (SRR10379723); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ba/404349b27595d8fcf310f5e53168b8]
+~> TaskHandler[id: 5; name: DOWNLOAD_SRA (SRR10379724); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/75/66a635c07826502540e229fbe3702b]
+~> TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+~> TaskHandler[id: 6; name: DOWNLOAD_SRA (SRR10379725); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e3793c68b64af47bea2c1749cb3dea]
+~> TaskHandler[id: 7; name: DOWNLOAD_SRA (SRR10379726); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ea/7cca22bc32c20c41762662131bee18]
+Nov-21 13:49:09.959 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 6 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: DOWNLOAD_SRA (SRR10379722); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/3e/6ccc356f3e733aff415b8c0252c438]
+~> TaskHandler[id: 4; name: DOWNLOAD_SRA (SRR10379723); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ba/404349b27595d8fcf310f5e53168b8]
+~> TaskHandler[id: 5; name: DOWNLOAD_SRA (SRR10379724); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/75/66a635c07826502540e229fbe3702b]
+~> TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+~> TaskHandler[id: 6; name: DOWNLOAD_SRA (SRR10379725); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e3793c68b64af47bea2c1749cb3dea]
+~> TaskHandler[id: 7; name: DOWNLOAD_SRA (SRR10379726); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ea/7cca22bc32c20c41762662131bee18]
+Nov-21 13:52:40.307 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: DOWNLOAD_SRA (SRR10379726); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ea/7cca22bc32c20c41762662131bee18]
+Nov-21 13:52:40.344 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:52:40.344 [Task submitter] INFO  nextflow.Session - [74/eeb987] Submitted process > TRIM_ALL_READS (SRR10379726_1)
+Nov-21 13:54:09.970 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 6 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: DOWNLOAD_SRA (SRR10379722); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/3e/6ccc356f3e733aff415b8c0252c438]
+~> TaskHandler[id: 4; name: DOWNLOAD_SRA (SRR10379723); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ba/404349b27595d8fcf310f5e53168b8]
+~> TaskHandler[id: 5; name: DOWNLOAD_SRA (SRR10379724); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/75/66a635c07826502540e229fbe3702b]
+~> TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+~> TaskHandler[id: 6; name: DOWNLOAD_SRA (SRR10379725); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e3793c68b64af47bea2c1749cb3dea]
+~> TaskHandler[id: 9; name: TRIM_ALL_READS (SRR10379726_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/74/eeb987763044d55663676e1d0520bf]
+Nov-21 13:55:50.345 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: TRIM_ALL_READS (SRR10379726_1); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/74/eeb987763044d55663676e1d0520bf]
+Nov-21 13:55:50.361 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:55:50.361 [Task submitter] INFO  nextflow.Session - [5f/9484ea] Submitted process > ALIGN (align)
+Nov-21 13:57:43.880 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: ALIGN (align); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/5f/9484eacbe856f2ab9bb5adbf18123b]
+Nov-21 13:59:10.057 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 5 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: DOWNLOAD_SRA (SRR10379722); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/3e/6ccc356f3e733aff415b8c0252c438]
+~> TaskHandler[id: 4; name: DOWNLOAD_SRA (SRR10379723); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ba/404349b27595d8fcf310f5e53168b8]
+~> TaskHandler[id: 5; name: DOWNLOAD_SRA (SRR10379724); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/75/66a635c07826502540e229fbe3702b]
+~> TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+~> TaskHandler[id: 6; name: DOWNLOAD_SRA (SRR10379725); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e3793c68b64af47bea2c1749cb3dea]
+Nov-21 13:59:26.019 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: DOWNLOAD_SRA (SRR10379723); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/ba/404349b27595d8fcf310f5e53168b8]
+Nov-21 13:59:26.028 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 13:59:26.029 [Task submitter] INFO  nextflow.Session - [88/531550] Submitted process > TRIM_ALL_READS (SRR10379723_1)
+Nov-21 14:04:10.108 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 5 -- submitted tasks are shown below
+~> TaskHandler[id: 3; name: DOWNLOAD_SRA (SRR10379722); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/3e/6ccc356f3e733aff415b8c0252c438]
+~> TaskHandler[id: 5; name: DOWNLOAD_SRA (SRR10379724); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/75/66a635c07826502540e229fbe3702b]
+~> TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+~> TaskHandler[id: 6; name: DOWNLOAD_SRA (SRR10379725); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e3793c68b64af47bea2c1749cb3dea]
+~> TaskHandler[id: 11; name: TRIM_ALL_READS (SRR10379723_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/88/531550a885cb11c817bd49977447ec]
+Nov-21 14:04:27.928 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: TRIM_ALL_READS (SRR10379723_1); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/88/531550a885cb11c817bd49977447ec]
+Nov-21 14:04:27.939 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:04:27.939 [Task submitter] INFO  nextflow.Session - [74/ed8e94] Submitted process > ALIGN (align)
+Nov-21 14:06:23.168 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: DOWNLOAD_SRA (SRR10379722); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/3e/6ccc356f3e733aff415b8c0252c438]
+Nov-21 14:06:23.220 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:06:23.221 [Task submitter] INFO  nextflow.Session - [fa/8429b7] Submitted process > TRIM_ALL_READS (SRR10379722_1)
+Nov-21 14:07:09.914 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: ALIGN (align); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/74/ed8e94d0bb92698da9cb2e954cff47]
+Nov-21 14:07:19.515 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: DOWNLOAD_SRA (SRR10379725); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/2b/e3793c68b64af47bea2c1749cb3dea]
+Nov-21 14:07:19.545 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:07:19.546 [Task submitter] INFO  nextflow.Session - [38/258805] Submitted process > TRIM_ALL_READS (SRR10379725_1)
+Nov-21 14:07:59.094 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: DOWNLOAD_SRA (SRR10379724); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/75/66a635c07826502540e229fbe3702b]
+Nov-21 14:07:59.109 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:07:59.109 [Task submitter] INFO  nextflow.Session - [dc/5cf7b3] Submitted process > TRIM_ALL_READS (SRR10379724_1)
+Nov-21 14:09:10.209 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 4 -- submitted tasks are shown below
+~> TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+~> TaskHandler[id: 13; name: TRIM_ALL_READS (SRR10379722_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/fa/8429b72dca8246734320556ac56c3a]
+~> TaskHandler[id: 14; name: TRIM_ALL_READS (SRR10379725_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/38/25880580096cbe734cd9988eb70ef1]
+~> TaskHandler[id: 15; name: TRIM_ALL_READS (SRR10379724_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/dc/5cf7b3146bf7d344bb334840d78eab]
+Nov-21 14:11:09.297 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: DOWNLOAD_SRA (SRR10379721); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/cc/e50cd317d4af9e64d4922ddbd861ac]
+Nov-21 14:11:09.307 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:11:09.308 [Task submitter] INFO  nextflow.Session - [8f/2fdf02] Submitted process > TRIM_ALL_READS (SRR10379721_1)
+Nov-21 14:11:57.108 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: TRIM_ALL_READS (SRR10379722_1); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/fa/8429b72dca8246734320556ac56c3a]
+Nov-21 14:11:57.118 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:11:57.119 [Task submitter] INFO  nextflow.Session - [d2/426ebf] Submitted process > ALIGN (align)
+Nov-21 14:13:17.043 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: TRIM_ALL_READS (SRR10379725_1); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/38/25880580096cbe734cd9988eb70ef1]
+Nov-21 14:13:17.051 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:13:17.052 [Task submitter] INFO  nextflow.Session - [6a/ab6592] Submitted process > ALIGN (align)
+Nov-21 14:14:10.253 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 4 -- submitted tasks are shown below
+~> TaskHandler[id: 15; name: TRIM_ALL_READS (SRR10379724_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/dc/5cf7b3146bf7d344bb334840d78eab]
+~> TaskHandler[id: 16; name: TRIM_ALL_READS (SRR10379721_1); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/8f/2fdf02a90c62a4aa9d4a94e71e05a1]
+~> TaskHandler[id: 17; name: ALIGN (align); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/d2/426ebf5695dd1a139eba022f5351ff]
+~> TaskHandler[id: 18; name: ALIGN (align); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/6a/ab6592870c925c9fa6e67ab6728f7a]
+Nov-21 14:14:11.790 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: TRIM_ALL_READS (SRR10379724_1); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/dc/5cf7b3146bf7d344bb334840d78eab]
+Nov-21 14:14:11.802 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:14:11.803 [Task submitter] INFO  nextflow.Session - [42/e3331e] Submitted process > ALIGN (align)
+Nov-21 14:15:20.610 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: ALIGN (align); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/d2/426ebf5695dd1a139eba022f5351ff]
+Nov-21 14:16:32.116 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: ALIGN (align); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/6a/ab6592870c925c9fa6e67ab6728f7a]
+Nov-21 14:17:28.254 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 19; name: ALIGN (align); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/42/e3331e7b6a6d8e43d53869379152b7]
+Nov-21 14:18:11.687 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: TRIM_ALL_READS (SRR10379721_1); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/8f/2fdf02a90c62a4aa9d4a94e71e05a1]
+Nov-21 14:18:11.698 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:18:11.699 [Task submitter] INFO  nextflow.Session - [e8/62f331] Submitted process > ALIGN (align)
+Nov-21 14:19:10.258 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 20; name: ALIGN (align); status: RUNNING; exit: -; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/e8/62f3312e868cd820a7b55e5220bb94]
+Nov-21 14:21:25.767 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 20; name: ALIGN (align); status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/e8/62f3312e868cd820a7b55e5220bb94]
+Nov-21 14:21:25.797 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:21:25.797 [Task submitter] INFO  nextflow.Session - [18/00c4d8] Submitted process > FEATURECOUNTS
+Nov-21 14:22:15.857 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 21; name: FEATURECOUNTS; status: COMPLETED; exit: 0; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/18/00c4d88162bc6c2e99dbf9918f133f]
+Nov-21 14:22:15.890 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-21 14:22:15.891 [Task submitter] INFO  nextflow.Session - [21/2e10b4] Submitted process > deseq2 (Running)
+Nov-21 14:22:19.893 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 22; name: deseq2 (Running); status: COMPLETED; exit: 1; error: -; workDir: /home/grani/nextflow_work/compil_deseq2/work/21/2e10b4795436b34cf5adee6bc768ab]
+Nov-21 14:22:19.904 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=deseq2 (Running); work-dir=/home/grani/nextflow_work/compil_deseq2/work/21/2e10b4795436b34cf5adee6bc768ab
+  error [nextflow.exception.ProcessFailedException]: Process `deseq2 (Running)` terminated with an error exit status (1)
+Nov-21 14:22:19.946 [TaskFinalizer-2] ERROR nextflow.processor.TaskProcessor - Error executing process > 'deseq2 (Running)'
+
+Caused by:
+  Process `deseq2 (Running)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  Rscript - << 'EOF'
+  ############################################################
+  ## BLOC 1 — Import counts.txt + préparation DESeq2
+  ############################################################
+  
+  library(DESeq2)
+  library(ggplot2)
+  
+  ## 1. Lecture du fichier featureCounts
+  raw_counts <- read.table(
+    "counts.txt",
+    header = TRUE,
+    row.names = 1,
+    sep = "	",
+    check.names = FALSE
+  )
+  
+  ## 2. Sélection des colonnes d’échantillons
+  ## IMPORTANT : chez toi, elles sont bien colonnes 6 à 11
+  counts <- raw_counts[, 6:11]
+  
+  ## 3. Vérification
+  print(colnames(counts))
+  
+  ## 4. Conversion en matrice entière
+  counts <- as.matrix(counts)
+  storage.mode(counts) <- "integer"
+  
+  ## 5. Récupération des noms d’échantillons
+  samples <- colnames(counts)
+  
+  ## 6. Définition des conditions (ordre = celui des colonnes)
+  condition <- c(
+    "control","control","control",
+    "persister","persister","persister"
+  )
+  
+  ## 7. Construction de colData
+  colData <- data.frame(
+    row.names = samples,
+    condition = factor(condition)
+  )
+  
+  ## 8. Création de l’objet DESeq2
+  dds <- DESeqDataSetFromMatrix(
+    countData = counts,
+    colData = colData,
+    design = ~ condition
+  )
+  
+  ## 9. Filtrage minimal (gènes exprimés)
+  dds <- dds[rowSums(counts(dds)) > 1, ]
+  
+  ## 10. Lancement de DESeq2
+  dds <- DESeq(dds)
+  
+  ## 11. Extraction des résultats
+  res <- results(dds)
+  df <- as.data.frame(res)
+  
+  ############################################################
+  ## BLOC 2 — Import du GFF + extraction des locus tags
+  ############################################################
+  
+  ## 1. Lire le fichier GFF
+  gff <- read.table(
+    "reference.gff",
+    sep = "	",
+    header = FALSE,
+    comment.char = "#",
+    stringsAsFactors = FALSE
+  )
+  
+  ## 2. Extraire la colonne des attributs (colonne 9)
+  attributes <- gff$V9
+  
+  ## 3. Fonction robuste pour extraire ID=SAUSA300_xxxx
+  extract_locus <- function(x) {
+    sub(".*ID=([^;]+).*", "\1", x)
+  }
+  
+  ## 4. Extraction effective
+  gff_ids <- extract_locus(attributes)
+  
+  ## 5. Nettoyage : si l’extraction ratée → NA
+  gff_ids[gff_ids == attributes] <- NA
+  
+  ## 6. Facultatif : data.frame structuré pour le génome
+  gff_df <- data.frame(
+    locus_tag = gff_ids,
+    chr = gff$V1,
+    start = gff$V4,
+    end = gff$V5,
+    strand = gff$V7,
+    stringsAsFactors = FALSE
+  )
+  
+  ## 7. Vérification
+  head(gff_df)
+  
+  ############################################################
+  ## BLOC 3 — MAPPING AUREOWIKI (final et corrigé)
+  ############################################################
+  
+  ## 1. Lecture du fichier AureoWiki COL
+  mapping <- read.delim(
+    "GeneSpecificInformation_COL.tsv",
+    header = TRUE,
+    sep = "	",
+    fill = TRUE,
+    quote = "",
+    comment.char = "",
+    stringsAsFactors = FALSE
+  )
+  
+  ## 2. Vérification des colonnes
+  colnames(mapping)
+  
+  ## 3. Sélection des colonnes utiles :
+  ##   - locus.tag  : identifiant de gène (équivalent SAOUHSC)
+  ##   - symbol     : nom de gène
+  mapping_clean <- mapping[, c("locus.tag", "symbol")]
+  
+  ## 4. Renommage propre pour la suite du workflow
+  colnames(mapping_clean) <- c("Locus_Tag", "Gene_Name")
+  
+  ## 5. Vérification finale
+  head(mapping_clean)
+  
+  ############################################################
+  ## BLOC 4 — Liste locale des gènes de la traduction
+  ## (compatible R 3.4.1, aucune dépendance KEGG)
+  ############################################################
+  
+  # Gènes codant les protéines du ribosome 30S
+  ribosomal_30S <- c(
+    "rpsA","rpsB","rpsC","rpsD","rpsE","rpsF","rpsG",
+    "rpsH","rpsI","rpsJ","rpsK","rpsL","rpsM","rpsN",
+    "rpsO","rpsP","rpsQ","rpsR","rpsS"
+  )
+  
+  # Gènes codant les protéines du ribosome 50S
+  ribosomal_50S <- c(
+    "rplA","rplB","rplC","rplD","rplE","rplF","rplG",
+    "rplH","rplI","rplJ","rplK","rplL","rplM","rplN",
+    "rplO","rplP","rplQ","rplR","rplS","rplT","rplU",
+    "rplV","rplW","rplX","rplY"
+  )
+  
+  # Facteurs d'initiation / élongation de la traduction
+  translation_factors <- c("tsf","tuf","fusA","infA","infB","infC")
+  
+  # Liste finale
+  ribosomal_gene_names <- c(
+    ribosomal_30S,
+    ribosomal_50S,
+    translation_factors
+  )
+  
+  # Vérification
+  ribosomal_gene_names
+  length(ribosomal_gene_names)
+  
+  ############################################################
+  ## BLOC 5 — Construction du tableau final avec DESeq2 + ribosomal
+  ############################################################
+  
+  ## 1. Convertir les résultats DESeq2 en data.frame
+  res_df <- as.data.frame(res)
+  res_df$geneID <- rownames(res_df)
+  
+  ## 2. Nettoyer les IDs (supprimer le préfixe "gene-")
+  res_df$Locus_Tag <- sub("^gene-", "", res_df$geneID)
+  
+  ## 3. Liste des gènes ribosomiques SAOUHSC (USA300/COL cluster)
+  ribosomal_saouhsc <- c(
+    "SAOUHSC_02120","SAOUHSC_02121","SAOUHSC_02122","SAOUHSC_02123",
+    "SAOUHSC_02124","SAOUHSC_02125","SAOUHSC_02126","SAOUHSC_02127",
+    "SAOUHSC_02128","SAOUHSC_02129","SAOUHSC_02130","SAOUHSC_02131",
+    "SAOUHSC_02132","SAOUHSC_02133","SAOUHSC_02134","SAOUHSC_02135",
+    "SAOUHSC_02136","SAOUHSC_02137","SAOUHSC_02138","SAOUHSC_02139",
+    "SAOUHSC_02140","SAOUHSC_02141","SAOUHSC_02142","SAOUHSC_02143",
+    "SAOUHSC_02144","SAOUHSC_02145","SAOUHSC_02146","SAOUHSC_02147",
+    "SAOUHSC_02148","SAOUHSC_02149","SAOUHSC_02150"
+  )
+  
+  ## 4. Annotation ribosomique
+  res_df$is_ribosomal <- res_df$Locus_Tag %in% ribosomal_saouhsc
+  
+  ## 5. Vérification
+  table(res_df$is_ribosomal)
+  
+  ## 6. Export fichier annoté
+  write.csv(
+    res_df,
+    file = "DESeq2_results_clean.csv",
+    row.names = FALSE
+  )
+  
+  ############################################################
+  ## BLOC 6 — Génération des figures du TP (simple + annotée)
+  ############################################################
+  
+  library(ggplot2)
+  
+  ############################################################
+  ## 6.1 — MA plot simple (comme dans DESeq2)
+  ############################################################
+  
+  pdf("MA_plot_simple.pdf", width = 7, height = 6)
+  
+  plotMA(
+    res,
+    ylim = c(-4,4),
+    alpha = 0.05,
+    main = "MA plot - Persister vs Control"
+  )
+  
+  dev.off()
+  
+  
+  ############################################################
+  ## 6.2 — MA plot annoté (gènes ribosomiques en rouge)
+  ############################################################
+  
+  pdf("MA_plot_annotated.pdf", width = 7, height = 6)
+  
+  ggplot(res_df, aes(x = baseMean, y = log2FoldChange)) +
+    geom_point(
+      aes(color = is_ribosomal),
+      alpha = 0.6,
+      size = 1.5
+    ) +
+    scale_x_log10() +
+    scale_color_manual(
+      values = c("FALSE" = "grey60", "TRUE" = "red"),
+      labels = c("Other genes", "Ribosomal genes")
+    ) +
+    theme_minimal(base_size = 12) +
+    labs(
+      title = "MA plot with ribosomal gene annotation",
+      x = "Mean expression (log10)",
+      y = "log2 Fold Change"
+    )
+  
+  dev.off()
+  
+  EOF
+
+Command exit status:
+  1
+
+Command output:
+  [1] "SRR10379726_1_trimmed.bam" "SRR10379723_1_trimmed.bam"
+  [3] "SRR10379722_1_trimmed.bam" "SRR10379725_1_trimmed.bam"
+  [5] "SRR10379724_1_trimmed.bam" "SRR10379721_1_trimmed.bam"
+    locus_tag        chr start     end strand
+  1      \001 CP000253.1     1 2821361      +
+  2      \001 CP000253.1   517    1878      +
+  3      \001 CP000253.1   517    1878      +
+  4      \001 CP000253.1  2156    3289      +
+  5      \001 CP000253.1  2156    3289      +
+  6      \001 CP000253.1  3670    3915      +
+
+Command error:
+  Loading required package: GenomicRanges
+  Loading required package: GenomeInfoDb
+  Loading required package: SummarizedExperiment
+  Loading required package: Biobase
+  Welcome to Bioconductor
+  
+      Vignettes contain introductory material; view with
+      'browseVignettes()'. To cite Bioconductor, see
+      'citation("Biobase")', and for packages 'citation("pkgname")'.
+  
+  Loading required package: DelayedArray
+  Loading required package: matrixStats
+  
+  Attaching package: ‘matrixStats’
+  
+  The following objects are masked from ‘package:Biobase’:
+  
+      anyMissing, rowMedians
+  
+  
+  Attaching package: ‘DelayedArray’
+  
+  The following objects are masked from ‘package:matrixStats’:
+  
+      colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges
+  
+  The following object is masked from ‘package:base’:
+  
+      apply
+  
+  [1] "SRR10379726_1_trimmed.bam" "SRR10379723_1_trimmed.bam"
+  [3] "SRR10379722_1_trimmed.bam" "SRR10379725_1_trimmed.bam"
+  [5] "SRR10379724_1_trimmed.bam" "SRR10379721_1_trimmed.bam"
+  estimating size factors
+  estimating dispersions
+  gene-wise dispersion estimates
+  mean-dispersion relationship
+  final dispersion estimates
+  fitting model and testing
+    locus_tag        chr start     end strand
+  1      \001 CP000253.1     1 2821361      +
+  2      \001 CP000253.1   517    1878      +
+  3      \001 CP000253.1   517    1878      +
+  4      \001 CP000253.1  2156    3289      +
+  5      \001 CP000253.1  2156    3289      +
+  6      \001 CP000253.1  3670    3915      +
+  Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
+    no lines available in input
+  Calls: read.delim -> read.table
+  Execution halted
+
+Work dir:
+  /home/grani/nextflow_work/compil_deseq2/work/21/2e10b4795436b34cf5adee6bc768ab
+
+Container:
+  vmichelet/r341_desq2
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Nov-21 14:22:19.952 [TaskFinalizer-2] DEBUG nextflow.Session - Session aborted -- Cause: Process `deseq2 (Running)` terminated with an error exit status (1)
+Nov-21 14:22:19.952 [main] DEBUG nextflow.Session - Session await > all processes finished
+Nov-21 14:22:19.999 [TaskFinalizer-2] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=21; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=4h 14m 54s; failedDuration=3.9s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=7; peakCpus=13; peakMemory=0; ]
+Nov-21 14:22:20.010 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Nov-21 14:22:20.010 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Nov-21 14:22:20.016 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=21; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=4h 14m 54s; failedDuration=3.9s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=7; peakCpus=13; peakMemory=0; ]
+Nov-21 14:22:20.021 [TaskFinalizer-2] DEBUG nextflow.Session - null
+java.lang.InterruptedException: null
+	at java.base/java.lang.Object.wait0(Native Method)
+	at java.base/java.lang.Object.wait(Object.java:366)
+	at java.base/java.lang.Thread.join(Thread.java:2079)
+	at java.base/java.lang.Thread.join(Thread.java:2155)
+	at nextflow.trace.AnsiLogObserver.onFlowComplete(AnsiLogObserver.groovy:520)
+	at nextflow.Session$_notifyFlowComplete_lambda39.doCall(Session.groovy:1121)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowComplete(Session.groovy:1121)
+	at nextflow.Session.shutdown0(Session.groovy:779)
+	at nextflow.Session.abort(Session.groovy:834)
+	at nextflow.Session.fault(Session.groovy:796)
+	at nextflow.processor.TaskPollingMonitor.finalizeTask(TaskPollingMonitor.groovy:753)
+	at nextflow.processor.TaskPollingMonitor.safeFinalizeTask(TaskPollingMonitor.groovy:736)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1339)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1094)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:645)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:82)
+	at nextflow.processor.TaskPollingMonitor$_checkTaskStatus_lambda8.doCall(TaskPollingMonitor.groovy:726)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Nov-21 14:22:20.185 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Nov-21 14:22:20.211 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

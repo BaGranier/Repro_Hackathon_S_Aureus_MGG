@@ -1,0 +1,87 @@
+
+Warning: Unknown annotation format: GFF. GTF format is used.
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	v1.4.6-p3
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 6 BAM files                                      ||
+||                           S SRR10379726_1_trimmed.bam                      ||
+||                           S SRR10379723_1_trimmed.bam                      ||
+||                           S SRR10379722_1_trimmed.bam                      ||
+||                           S SRR10379725_1_trimmed.bam                      ||
+||                           S SRR10379724_1_trimmed.bam                      ||
+||                           S SRR10379721_1_trimmed.bam                      ||
+||                                                                            ||
+||             Output file : counts.txt                                       ||
+||             Annotations : reference.gff (GTF)                              ||
+||                                                                            ||
+||                 Threads : 4                                                ||
+||                   Level : meta-feature level                               ||
+||              Paired-end : no                                               ||
+||         Strand specific : no                                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file reference.gff ...                                     ||
+||    Features : 2967                                                         ||
+||    Meta-features : 2967                                                    ||
+||    Chromosomes : 1                                                         ||
+||                                                                            ||
+|| Process BAM file SRR10379726_1_trimmed.bam...                              ||
+||    Single-end reads are included.                                          ||
+||    Assign reads to features...                                             ||
+||    Total reads : 27021389                                                  ||
+||    Successfully assigned reads : 6473815 (24.0%)                           ||
+||    Running time : 0.10 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR10379723_1_trimmed.bam...                              ||
+||    Single-end reads are included.                                          ||
+||    Assign reads to features...                                             ||
+||    Total reads : 39650076                                                  ||
+||    Successfully assigned reads : 18728207 (47.2%)                          ||
+||    Running time : 0.13 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR10379722_1_trimmed.bam...                              ||
+||    Single-end reads are included.                                          ||
+||    Assign reads to features...                                             ||
+||    Total reads : 44200002                                                  ||
+||    Successfully assigned reads : 20877434 (47.2%)                          ||
+||    Running time : 0.14 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR10379725_1_trimmed.bam...                              ||
+||    Single-end reads are included.                                          ||
+||    Assign reads to features...                                             ||
+||    Total reads : 46239153                                                  ||
+||    Successfully assigned reads : 26527747 (57.4%)                          ||
+||    Running time : 0.14 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR10379724_1_trimmed.bam...                              ||
+||    Single-end reads are included.                                          ||
+||    Assign reads to features...                                             ||
+||    Total reads : 47295223                                                  ||
+||    Successfully assigned reads : 22609840 (47.8%)                          ||
+||    Running time : 0.15 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR10379721_1_trimmed.bam...                              ||
+||    Single-end reads are included.                                          ||
+||    Assign reads to features...                                             ||
+||    Total reads : 51905708                                                  ||
+||    Successfully assigned reads : 24966806 (48.1%)                          ||
+||    Running time : 0.17 minutes                                             ||
+||                                                                            ||
+||                         Read assignment finished.                          ||
+||                                                                            ||
+\\===================== http://subread.sourceforge.net/ ======================//
+
