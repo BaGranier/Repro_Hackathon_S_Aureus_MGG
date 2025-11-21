@@ -27,12 +27,7 @@ Reproduire les figures principales de l’article à partir des données publiqu
 
 ---
 
-## Exécution rapide (exemple)
 
-### Paramètres de la machine virtuelle utilisée
-- **16 CPU**  
-- **64 Go de RAM**  
-- **400 Go de stockage**
 
 ### Fichiers nécessaires
 - **`main.nf`**, **`nextflow.config`**, **`data/`**

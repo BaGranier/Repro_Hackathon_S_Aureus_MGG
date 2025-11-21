@@ -1,0 +1,36 @@
+Dans kgeg il va y avoir ...
+
+aminoacid ribo traslation
+On va trouver les id des gènes à mettre dans le MA plot (just les ID ) 
+
+pour afficher les noms des gènes, ils ne sont pas dans le fichier. ils proviennent de aureo wiki (on rentre les id et on retrouve les gènes) 
+
+Sur le 1er MA plot on a trop de gènes affichés
+ON prend les colonnes qu'on veut et on va chercher le csv. (!nt les colonnes d'intérêt) 
+
+Download -> gene specific info -> abort//
+ID -> gene symbol 
+piege : gene PTH -> colonne
+
+BDD kgeg -> BDD qui décrit l'ensemble des voies métaboliques (enzym et (prot ? ))
+Dans l'article, on a besoin de 3/4 voies métabo 
+
+COmment faire tourner les programmes ?
+
+Pour desq2 mettre script dans un dosier nommé bin au même niveau qur le main.nf 
+--> transifrmer nottre script pr pas qu'il prenne les variables de nextlofw dedans, 
+ces variables ont les donne en arguement à notre script
+
+--> Script R sera interprété avec Rscript
+besoin de deux choses pr ca :
+QUe le script prenne des arguments en entrée 
+QUE LE script soit dans le bien et que la premiere ligne du script soit #!/usr/bin/env Rscript
+
+pr aller pljs loin --> comparaison / autres figures 
+
+
+verifier qu'on a les bonnes annotation entre controle et percepter --> dans le script de r
+
+
+Rapport intro objectif methode pipeline description resulat comparaison conclusion discussion
+
