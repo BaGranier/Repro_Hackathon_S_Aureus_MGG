@@ -10,9 +10,20 @@ library(ggplot2)
 counts_raw <- read.table(counts, header=TRUE, sep="\t",
                          comment.char="#", stringsAsFactors=FALSE, check.names=FALSE)
 
+desired_order <- c(
+  "SRR10379721_1_trimmed.bam",  # IP1
+  "SRR10379722_1_trimmed.bam",  # IP2
+  "SRR10379723_1_trimmed.bam",  # IP3
+  "SRR10379724_1_trimmed.bam",  # Ctrl1
+  "SRR10379725_1_trimmed.bam",  # Ctrl2
+  "SRR10379726_1_trimmed.bam"   # Ctrl3
+)
+
+
 # Colonnes des counts
 start_col <- 7
 count_matrix <- counts_raw[, start_col:ncol(counts_raw)]
+count_matrix <- count_matrix[, desired_order]
 
 # Gene IDs comme noms de lignes
 rownames(count_matrix) <- counts_raw$Geneid
