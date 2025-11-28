@@ -1,0 +1,128 @@
+nov.-28 13:46:26.478 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf
+nov.-28 13:46:26.537 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.0
+nov.-28 13:46:26.576 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/nextflow.config
+nov.-28 13:46:26.579 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/nextflow.config
+nov.-28 13:46:26.603 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+nov.-28 13:46:27.043 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/pierrejeangouze/.nextflow/plugins; core-plugins: nf-amazon@3.4.1,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.3,nf-k8s@1.2.2,nf-tower@1.17.1,nf-wave@1.16.1
+nov.-28 13:46:27.057 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+nov.-28 13:46:27.058 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+nov.-28 13:46:27.061 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+nov.-28 13:46:27.075 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+nov.-28 13:46:27.233 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+nov.-28 13:46:27.235 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+nov.-28 13:46:27.235 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+nov.-28 13:46:27.251 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /Users/pierrejeangouze/.nextflow/secrets/store.json
+nov.-28 13:46:27.254 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@692dba54] - activable => nextflow.secret.LocalSecretsProvider@692dba54
+nov.-28 13:46:27.263 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+nov.-28 13:46:27.276 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [compassionate_poisson] DSL2 - revision: 06903c3e1e
+nov.-28 13:46:27.325 [main] DEBUG nextflow.Session - Session UUID: baf639e4-9ccb-4fb2-9a42-7cbcf674be39
+nov.-28 13:46:27.326 [main] DEBUG nextflow.Session - Run name: compassionate_poisson
+nov.-28 13:46:27.326 [main] DEBUG nextflow.Session - Executor pool size: 8
+nov.-28 13:46:27.335 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+nov.-28 13:46:27.339 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+nov.-28 13:46:27.366 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.10.0 build 10289
+  Created: 22-10-2025 16:26 UTC (18:26 CEST)
+  System: Mac OS X 15.0
+  Runtime: Groovy 4.0.28 on OpenJDK 64-Bit Server VM 21.0.9
+  Encoding: UTF-8 (UTF-8)
+  Process: 12773@MacBook-Air-de-Pierre-jean.local [127.0.0.1]
+  CPUs: 8 - Mem: 8 GB (90.4 MB) - Swap: 3 GB (1.5 GB)
+nov.-28 13:46:27.382 [main] DEBUG nextflow.Session - Work-dir: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/work [Mac OS X]
+nov.-28 13:46:27.383 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/bin
+nov.-28 13:46:27.391 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+nov.-28 13:46:27.399 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+nov.-28 13:46:27.401 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+nov.-28 13:46:27.434 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+nov.-28 13:46:27.443 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+nov.-28 13:46:27.489 [main] DEBUG nextflow.Session - Session start
+nov.-28 13:46:27.624 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+nov.-28 13:46:27.700 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:deseq2` matches process deseq2
+nov.-28 13:46:27.724 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+nov.-28 13:46:27.724 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+nov.-28 13:46:27.732 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+nov.-28 13:46:27.739 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=8 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+nov.-28 13:46:27.741 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+nov.-28 13:46:27.762 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'deseq2': maxForks=0; fair=false; array=0
+nov.-28 13:46:27.806 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: deseq2
+nov.-28 13:46:27.808 [main] DEBUG nextflow.Session - Igniting dataflow network (1)
+nov.-28 13:46:27.809 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > deseq2
+nov.-28 13:46:27.809 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_130283c633633780: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/main.nf
+nov.-28 13:46:27.809 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+nov.-28 13:46:27.809 [main] DEBUG nextflow.Session - Session await
+nov.-28 13:46:27.961 [Actor Thread 3] DEBUG nextflow.util.HashBuilder - Unable to get file attributes file: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/data/deseq_fonc2.R -- Cause: java.nio.file.NoSuchFileException: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/data/deseq_fonc2.R
+nov.-28 13:46:28.046 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+nov.-28 13:46:28.048 [Task submitter] INFO  nextflow.Session - [f7/2ff686] Submitted process > deseq2 (Running)
+nov.-28 13:46:28.512 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: deseq2 (Running); status: COMPLETED; exit: 125; error: -; workDir: /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/work/f7/2ff686c1bae5174ac8241b6a926d8a]
+nov.-28 13:46:28.512 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+nov.-28 13:46:28.521 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=deseq2 (Running); work-dir=/Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/work/f7/2ff686c1bae5174ac8241b6a926d8a
+  error [nextflow.exception.ProcessFailedException]: Process `deseq2 (Running)` terminated with an error exit status (125)
+nov.-28 13:46:28.537 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'deseq2 (Running)'
+
+Caused by:
+  Process `deseq2 (Running)` terminated with an error exit status (125)
+
+
+Command executed:
+
+  Rscript deseq_fonc2.R counts.txt
+
+Command exit status:
+  125
+
+Command output:
+  (empty)
+
+Command error:
+  docker: Cannot connect to the Docker daemon at unix:///Users/pierrejeangouze/.docker/run/docker.sock. Is the docker daemon running?
+  
+  Run 'docker run --help' for more information
+
+Work dir:
+  /Users/pierrejeangouze/Documents/APT/IODAA/AMI2B/ReproHackathon/Repro_Hackathon_S_Aureus_MGG/Nextflow/working_nf/Deseq_2811/plot/work/f7/2ff686c1bae5174ac8241b6a926d8a
+
+Container:
+  vmichelet/r341_desq2
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+nov.-28 13:46:28.559 [TaskFinalizer-1] DEBUG nextflow.Session - Session aborted -- Cause: Process `deseq2 (Running)` terminated with an error exit status (125)
+nov.-28 13:46:28.559 [main] DEBUG nextflow.Session - Session await > all processes finished
+nov.-28 13:46:28.587 [TaskFinalizer-1] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=447ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+nov.-28 13:46:28.595 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+nov.-28 13:46:28.595 [main] DEBUG nextflow.Session - Session await > all barriers passed
+nov.-28 13:46:28.598 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=447ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+nov.-28 13:46:28.597 [TaskFinalizer-1] DEBUG nextflow.Session - null
+java.lang.InterruptedException: null
+	at java.base/java.lang.Object.wait0(Native Method)
+	at java.base/java.lang.Object.wait(Object.java:366)
+	at java.base/java.lang.Thread.join(Thread.java:2079)
+	at java.base/java.lang.Thread.join(Thread.java:2155)
+	at nextflow.trace.AnsiLogObserver.onFlowComplete(AnsiLogObserver.groovy:520)
+	at nextflow.Session$_notifyFlowComplete_lambda39.doCall(Session.groovy:1121)
+	at nextflow.Session.notifyEvent(Session.groovy:1151)
+	at nextflow.Session.notifyFlowComplete(Session.groovy:1121)
+	at nextflow.Session.shutdown0(Session.groovy:779)
+	at nextflow.Session.abort(Session.groovy:834)
+	at nextflow.Session.fault(Session.groovy:796)
+	at nextflow.processor.TaskPollingMonitor.finalizeTask(TaskPollingMonitor.groovy:753)
+	at nextflow.processor.TaskPollingMonitor.safeFinalizeTask(TaskPollingMonitor.groovy:736)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1339)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1094)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:645)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethodSafe(InvokerHelper.java:82)
+	at nextflow.processor.TaskPollingMonitor$_checkTaskStatus_lambda8.doCall(TaskPollingMonitor.groovy:726)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+nov.-28 13:46:28.750 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+nov.-28 13:46:28.764 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
