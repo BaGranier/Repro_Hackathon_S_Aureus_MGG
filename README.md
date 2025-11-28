@@ -2,7 +2,7 @@
 Valentine Michelet, Pierre-Jean Gouze et Baptiste Granier
 
 
-Ce projet reproduit le pipeline **RNA-seq** de l’article *“Intracellular Staphylococcus aureus persisters upon antibiotic exposure”* de manière **reproductible**, depuis les fichiers FASTQ jusqu’aux analyses différentielles (MA-plots DESeq2).
+Ce projet reproduit le pipeline **RNA-seq** de l’article *“Intracellular Staphylococcus aureus persisters upon antibiotic exposure”* de manière **reproductible**, depuis les fichiers FASTQ jusqu’aux analyses différentielles (et production des MA-plots DESeq2).
 
 L’objectif est de garantir la reproductibilité complète des résultats : mêmes versions de packages, mêmes outils.
 
@@ -23,7 +23,7 @@ L’objectif est de garantir la reproductibilité complète des résultats : mê
 ## Objectif
 
 
-Reproduire les figures principales de l’article à partir des données publiques, dans un environnement **conteneurisé** et **traçable** via Nextflow + Docker.
+Reproduire les figures principales de l’article à partir des données publiques, dans un environnement **conteneurisé** et **traçable** via Nextflow et Docker.
 
 ---
 
