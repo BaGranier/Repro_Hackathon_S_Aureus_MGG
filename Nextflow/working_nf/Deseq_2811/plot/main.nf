@@ -18,5 +18,5 @@ process deseq2 {
 }
 
 workflow {
-    deseq2(file("counts.txt"), file("data/deseq_fonc.R") )
+    deseq2(file("counts.txt"), file("data/deseq_fonc2.R") )
 }
