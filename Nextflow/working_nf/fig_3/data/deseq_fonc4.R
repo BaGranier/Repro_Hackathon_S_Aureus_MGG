@@ -251,8 +251,7 @@ dev.off()
 }
 
 #############################################
-### VOLCANO PLOT — compatible R 3.4.1     ###
-### ggplot2 2.2.1 — SANS dplyr, SANS ggrepel
+###       VOLCANO PLOT                    ###
 #############################################
 
 plot_volcano <- function(res, fig_title = "Volcano_plot") {
@@ -335,3 +334,5 @@ plot_volcano(res, "Volcano_repro")
 # plot_all_genes(res_exp, "MA_plot_all_genes_repro")
 
 # plot_volcano(res_exp, "Volcano_repro")
+
+write.csv2(res, "Resultats_deseq2.csv", row.names = FALSE)

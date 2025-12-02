@@ -3,6 +3,7 @@ nextflow.enable.dsl=2
 process deseq2 {
     tag "Running"
     container 'vmichelet/r341_desq2'
+    publishDir 'results', mode: 'copy'
 
     input:
     path counts
@@ -12,6 +13,7 @@ process deseq2 {
 
     output:
     path "*.png"
+    path "Resultats_deseq2.csv"
 
     script:
     """
