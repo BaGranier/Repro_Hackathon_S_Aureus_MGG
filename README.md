@@ -15,7 +15,7 @@ L’objectif est de garantir la reproductibilité complète des résultats : mê
 | **`main.nf`** | Script **Nextflow** principal décrivant l’ensemble du pipeline. |
 | **`nextflow.config`** | Fichier de configuration du pipeline : définit les images Docker à utiliser (appel depuis DockerHub). |
 | **`Container_docker/`** | Contient un Dockerfile pour chaque outil utilisé (Bowtie, Cutadapt, FeatureCounts, DESeq2, etc.). Les images correspondantes sont disponibles sur DockerHub. |
-| **`data/`** | Données d’entrée :<br>• `config.csv` - table de description des échantillons (nom, URL FASTQ, réplicat, condition)<br>• script R (analyse DESeq2). |
+| **`Data/`** | Données d’entrée :<br>• `config.csv` - table de description des échantillons (nom, URL FASTQ, réplicat, condition)<br>• script R (analyse DESeq2). |
 | **`to_delete/`** | Dossier temporaire pour fichiers/données à valider avant suppression définitive. |
 
 ---
@@ -30,7 +30,7 @@ Reproduire les figures principales de l’article à partir des données publiqu
 
 
 ### Fichiers nécessaires
-- **`main.nf`**, **`nextflow.config`**, **`data/`**
+- **`main.nf`**, **`nextflow.config`**, **`Data/`**
 
 ### Lancer le pipeline
 
