@@ -175,5 +175,5 @@ workflow {
     fastq_ch = TRIM_ALL_READS(fastq_files)
     bam = ALIGN(fastq_ch, index)
     counts = FEATURECOUNTS(bam.collect(), gff)
-    deseq2(counts, file("data/Aureo_data2.csv"), file("data/GSE139659_IPvsctrl.complete.csv"),  file("data/deseq_fonc4.R") )
+    deseq2(counts, file("data/Aureo_data2.csv"), file("data/GSE139659_IPvsctrl.complete.csv"),  file("data/deseq_fonc5.R") )
 }

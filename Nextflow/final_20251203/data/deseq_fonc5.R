@@ -126,76 +126,96 @@ basal_line <- 0
 # # -----------------------------
 plot_MA_translation <- function(sub, fig_title = "MA-plot") {
 
-# png("MA_translation_genes_final.png", width = 1400, height = 1000)
-png(paste0(gsub(" ", "_", fig_title), ".png"), width = 1400, height = 1000)
-
-plot(
-  log2(sub$baseMean),
-  sub$log2FoldChange,
-  pch = 16,
-  cex = 2,               # taille des points
-  col = sub$color,
-  xlab = "log2(Base Mean)",
-  ylab = "log2 Fold Change",
-  #main = "MA-plot – Translation Genes",
-  main = fig_title,
-  ylim = c(-6, 5),
-  xlim = c(0, 20),
-  xaxt = "n",
-  yaxt = "n"
-)
-
-# Ligne basale
-abline(h = basal_line, lty = 2, col = "black")
-
-# Axes personnalisés
-axis(side = 1, at = seq(0, 20, by = 2))
-axis(side = 2, at = seq(-6, 5, by = 1))
-
-# Ajouter contours noirs pour AA-tRNA synthetases
-points(
-  log2(sub$baseMean[sub$aaRS]),
-  sub$log2FoldChange[sub$aaRS],
-  pch = 1,   # cercle vide
-  cex = 2.5,
-  lwd = 2,
-  col = "black"
-)
-
-# Ajouter traits verticaux pour les gènes à mettre en avant
-highlight_points <- sub[sub$GeneName %in% highlight_genes, ]
-for(i in 1:nrow(highlight_points)){
-  segments(
-    x0 = log2(highlight_points$baseMean[i]),
-    y0 = highlight_points$log2FoldChange[i],
-    x1 = log2(highlight_points$baseMean[i]),
-    y1 = highlight_points$log2FoldChange[i] + 1,  # longueur du trait
-    col = "red",
-    lwd = 1.5,
-    lty = 2
+#png("MA_translation_genes_final.png", width = 1400, height = 1000)
+png(paste0(gsub(" ", "_", fig_title), ".png"), width = 700, height = 700)  # carré
+#pdf("MA_plot_translationgenes_FINAL.pdf", width = 10, height = 10)
+  # Dataframe
+  plot_df <- data.frame(
+    log2BaseMean     = log2(sub$baseMean),
+    log2FoldChange   = sub$log2FoldChange,
+    signif           = ifelse(sub$color == "red", "Significant", "Non-Significant"),
+    is_aaRS          = sub$aaRS,
+    GeneName         = sub$GeneName
   )
-}
 
-# Ajouter labels au bout des traits
-text(
-  log2(highlight_points$baseMean + 1),
-  highlight_points$log2FoldChange + 1.1,
-  labels = highlight_points$GeneName,
-  pos = 3,
-  cex = 1,
-  col = "red"
-)
+  highlight_df <- subset(plot_df, GeneName %in% highlight_genes)
 
-# Légende
-legend(
-  "topright",
-  legend = c("Significant", "Non-significant", "aaRS", "Highlighted genes"),
-  col = c("red", "grey", "black", "red"),
-  pch = c(16,16,1,NA),
-  lty = c(NA,NA,NA,2),
-  pt.cex = c(2,2,2.5,NA),
-  pt.lwd = c(1,1,2,1)
-)
+  # ----- BASE GGplot -----
+p <- ggplot(plot_df, aes(log2BaseMean, log2FoldChange)) +
+
+  # -------------------------------------------------------------------------
+  # Points gris et rouges
+  geom_point(aes(color = signif), size = 3, alpha = 0.9) +
+  scale_color_manual(
+    values = c("Non-Significant" = "grey70",
+               "Significant"     = "red"),
+    name = "Genes"
+  ) +
+
+  # AA-tRNA synthétases
+  geom_point(
+    data = subset(plot_df, is_aaRS),
+    color = "red", size = 3.5
+  ) +
+  geom_point(
+    data = subset(plot_df, is_aaRS),
+    aes(shape = "AA_tRNA_synthetases"),
+    size = 4, stroke = 2.2, color = "black"
+  ) +
+  scale_shape_manual(values = c("AA_tRNA_synthetases" = 1), name = "") +
+
+  # Segments et labels
+  geom_segment(
+    data = highlight_df,
+    aes(xend = log2BaseMean + 0.8, yend = log2FoldChange + 0.8),
+    size = 0.9
+  ) +
+  geom_text(
+    data = highlight_df,
+    aes(x = log2BaseMean + 0.9, y = log2FoldChange + 0.9, label = GeneName),
+    fontface = "italic", size = 5
+  ) +
+
+  geom_hline(yintercept = 0, linetype = "dashed", size = 0.8) +
+
+  scale_x_continuous(
+    limits = c(0, 20),
+    breaks = seq(0, 20, by = 2),
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(
+    limits = c(-6, 5),
+    breaks = seq(-6, 5, by = 1),
+    expand = c(0, 0)
+  ) +
+
+  # -------------------------------------------------------------------------
+  # carré parfait + légende dans le cadre
+  coord_fixed(ratio = 2) +
+  theme_bw() +
+  ggtitle(fig_title)+
+  theme(
+    panel.grid = element_blank(),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+
+    axis.title = element_text(size = 18),
+    axis.text  = element_text(size = 14),
+
+    legend.position = c(0.05, 0.1),      # <<< position interne (en haut à gauche)
+    legend.justification = c("left"),
+    legend.box = "horizontal",
+    legend.background = element_blank(),
+    legend.title = element_text(size = 11),
+    legend.text = element_text(size = 11),
+
+    plot.margin = margin(5, 5, 5, 5),
+    plot.title = element_text(
+        size = 22,       # << taille
+        #face = "bold",   # optionnel, pour un titre plus propre
+        hjust = 0.5      # << CENTRÉ
+    ),
+  )
+  print(p)
 
 dev.off()
 }
@@ -245,7 +265,13 @@ ggplot() +
     ylim(ylim_min, ylim_max) +
     ggtitle(paste0("MA-plot with triangles for out-of-range values _", fig_title)) +
     xlab("baseMean (log10 scale)") +
-    ylab("log2 Fold Change")
+    ylab("log2 Fold Change")+
+    theme(
+        plot.title = element_text(
+            size = 20,      # ← augmente la taille
+            hjust = 0.5     # ← CENTRE le titre
+        )
+    )
 )
 dev.off()
 }
@@ -305,8 +331,10 @@ ggplot(df, aes(x = log2FoldChange, y = -log10(padj))) +
     
     theme_bw(base_size = 16) +
     theme(
-        plot.title = element_text(face = "bold", size = 20),
-        legend.position = "right"
+        plot.title = element_text(
+            size = 20,      # ← augmente la taille
+            hjust = 0.5     # ← CENTRE le titre
+        )
     ) +
     
     labs(
@@ -335,4 +363,4 @@ plot_volcano(res, "Volcano_repro")
 
 # plot_volcano(res_exp, "Volcano_repro")
 
-write.csv2(res, "Resultats_deseq2.csv", row.names = FALSE)
+write.csv2(sub, "Resultats_deseq2.csv", row.names = FALSE)
