@@ -126,9 +126,7 @@ basal_line <- 0
 # # -----------------------------
 plot_MA_translation <- function(sub, fig_title = "MA-plot") {
 
-#png("MA_translation_genes_final.png", width = 1400, height = 1000)
 png(paste0(gsub(" ", "_", fig_title), ".png"), width = 700, height = 700)  # carré
-#pdf("MA_plot_translationgenes_FINAL.pdf", width = 10, height = 10)
   # Dataframe
   plot_df <- data.frame(
     log2BaseMean     = log2(sub$baseMean),
@@ -190,7 +188,6 @@ p <- ggplot(plot_df, aes(log2BaseMean, log2FoldChange)) +
   ) +
 
   # -------------------------------------------------------------------------
-  # carré parfait + légende dans le cadre
   coord_fixed(ratio = 2) +
   theme_bw() +
   ggtitle(fig_title)+
@@ -201,7 +198,7 @@ p <- ggplot(plot_df, aes(log2BaseMean, log2FoldChange)) +
     axis.title = element_text(size = 18),
     axis.text  = element_text(size = 14),
 
-    legend.position = c(0.05, 0.1),      # <<< position interne (en haut à gauche)
+    legend.position = c(0.05, 0.1),     
     legend.justification = c("left"),
     legend.box = "horizontal",
     legend.background = element_blank(),
@@ -225,8 +222,6 @@ dev.off()
 plot_all_genes <- function(res, fig_title = "MA-plot_all") {
 
 png(paste0(gsub(" ", "_", fig_title), ".png"), width=1000, height=800)
-#png("okok.png", width=1000, height=800)
-
 df <- as.data.frame(res)
 df <- df[df$baseMean <= 1e6, ]
 
@@ -253,12 +248,12 @@ ggplot() +
     # Triangles du haut
     geom_point(data = df_top,
                aes(x = baseMean, y = ylim_max, color = col),
-               shape = 24, size = 2, fill = "white") +     # triangle haut
+               shape = 24, size = 2, fill = "white") +    
 
     # Triangles du bas
     geom_point(data = df_bottom,
                aes(x = baseMean, y = ylim_min, color = col),
-               shape = 25, size = 2, fill = "white") +     # triangle bas
+               shape = 25, size = 2, fill = "white") +     
 
     scale_color_identity() +
     scale_x_log10(limits = c(1, 1e6)) +
@@ -268,8 +263,8 @@ ggplot() +
     ylab("log2 Fold Change")+
     theme(
         plot.title = element_text(
-            size = 20,      # ← augmente la taille
-            hjust = 0.5     # ← CENTRE le titre
+            size = 20,      
+            hjust = 0.5     
         )
     )
 )
@@ -313,32 +308,23 @@ ggplot(df, aes(x = log2FoldChange, y = -log10(padj))) +
         "Up"   = "firebrick2",
         "Down" = "dodgerblue2"
     )) +
-    
-    # Lignes de seuil
     geom_vline(xintercept = c(-logfc_threshold, logfc_threshold),
                color = "black", linetype = "dashed") +
     geom_hline(yintercept = -log10(padj_threshold),
                color = "black", linetype = "dashed") +
-    
-    # Labels simples (sans ggrepel)
     geom_text(data = df_labels,
               aes(label = rownames(df_labels)),
               size = 3,
               vjust = -0.5) +
-
-    # 🟢 LIMITES D’AXES (NEW)
-    #coord_cartesian(xlim = c(-5, 5), ylim = c(-1, 75)) +
-    
     theme_bw(base_size = 16) +
     theme(
         plot.title = element_text(
-            size = 20,      # ← augmente la taille
-            hjust = 0.5     # ← CENTRE le titre
+            size = 20,      
+            hjust = 0.5     
         )
     ) +
-    
     labs(
-        title = "Volcano Plot (DESeq2)",
+        title = fig_title,
         x = "log2 Fold Change (-5,5)",
         y = "-log10(p-adj) (-1,75)",
         color = "Gene Group"
