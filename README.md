@@ -51,3 +51,13 @@ nextflow -version
 
 ```bash
 nextflow run main.nf
+```
+
+### Configuration testée : 
+VM sur le Cloub IFB : 
+- 8 vCPU
+- 32 Go de RAM
+- 200 Go de stockage
+
+Temps d'execution : 
+
