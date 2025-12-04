@@ -150,6 +150,24 @@ process deseq2 {
     """
 }
 
+process pca {
+    tag "Running"
+    container 'vmichelet/rdesq2_pca_recent'
+    publishDir 'results', mode: 'copy'
+
+    input:
+    path counts
+    file pca_script
+
+    output:
+    path "*.png"
+
+    script:
+    """
+    Rscript ${pca_script} ${counts}
+    """
+}
+
 
 workflow {
     // Liste definie directement ici
@@ -176,4 +194,5 @@ workflow {
     bam = ALIGN(fastq_ch, index)
     counts = FEATURECOUNTS(bam.collect(), gff)
     deseq2(counts, file("data/Aureo_data2.csv"), file("data/GSE139659_IPvsctrl.csv"),  file("data/deseq_fonc6.R") )
+    pca(counts, file("data/pca.R") )
 }
