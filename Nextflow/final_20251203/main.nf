@@ -146,7 +146,7 @@ process deseq2 {
 
     script:
     """
-    Rscript ${deseq_script} ${counts} ${aureo}
+    Rscript ${deseq_script} ${counts} ${aureo} ${res_exp}
     """
 }
 
