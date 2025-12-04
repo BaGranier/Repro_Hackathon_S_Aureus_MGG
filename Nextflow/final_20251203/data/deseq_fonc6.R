@@ -16,6 +16,14 @@ library(ggplot2)
 counts_raw <- read.table(counts, header=TRUE, sep="\t",
                          comment.char="#", stringsAsFactors=FALSE, check.names=FALSE)
 
+res_exp <- read.table(res_exp, header=TRUE, sep=";", comment.char="#", stringsAsFactors=FALSE, check.names=FALSE)
+
+res_exp <- res_exp[, c("baseMean", "log2FoldChange", "lfcSE", "stat", "pvalue", "padj","Name")
+  ]
+names(res_exp)[7] <- "GeneID"
+res_exp <- na.omit(res_exp)
+
+
 desired_order <- c(
   "SRR10379721_1_trimmed.bam",  # IP1
   "SRR10379722_1_trimmed.bam",  # IP2
@@ -84,22 +92,22 @@ res_df <- as.data.frame(res)
 # Ajouter colonne GeneID nettoyée
 res_df$GeneID <- toupper(gsub("^gene-", "", rownames(res_df)))
 
-# -- 4. Filtrer pour ne garder que les gènes présents dans Aureo_data --
-sub <- merge(res_df, translation_genes, by = "GeneID")
-
-
 # -----------------------------
 # 1. Liste des gènes à mettre en avant
 # -----------------------------
 highlight_genes <- c("frr","infA","tsf","infC","infB","pth")
 
 
-# Merge final propre
-sub <- merge(res_df, translation_genes, by = "GeneID")
-
 # -----------------------------
 # 3. Filtrage gènes de traduction
 # -----------------------------
+
+
+# # -----------------------------
+# # 7. MA-plot complet avec traits et labels
+# # -----------------------------
+plot_MA_translation <- function(res_df, fig_title = "MA-plot") {
+
 sub <- res_df[res_df$GeneID %in% translation_genes$GeneID, ]
 sub <- merge(sub, translation_genes, by = "GeneID")
 
@@ -121,10 +129,7 @@ sub$color <- ifelse(sub$padj < 0.05, "red", "grey")
 # -----------------------------
 basal_line <- 0
 
-# # -----------------------------
-# # 7. MA-plot complet avec traits et labels
-# # -----------------------------
-plot_MA_translation <- function(sub, fig_title = "MA-plot") {
+
 
 png(paste0(gsub(" ", "_", fig_title), ".png"), width = 700, height = 700)  # carré
   # Dataframe
@@ -335,18 +340,20 @@ dev.off()
 
 ######
 
-plot_MA_translation(sub, "MA-plot_repro") 
+plot_MA_translation(res_df, "MA-plot_repro") 
 
-plot_all_genes(res, "MA_plot_all_genes_repro")
+plot_all_genes(res_df, "MA_plot_all_genes_repro")
 
-plot_volcano(res, "Volcano_repro")
+plot_volcano(res_df, "Volcano_repro")
 
 #### Figures de l'expérience
 
-# plot_MA_translation(res_exp, "MA-plot_repro") 
+plot_MA_translation(res_exp, "MA-plot_EXP") 
 
-# plot_all_genes(res_exp, "MA_plot_all_genes_repro")
+plot_all_genes(res_exp, "MA_plot_all_genes_EXP")
 
-# plot_volcano(res_exp, "Volcano_repro")
+plot_volcano(res_exp, "Volcano_EXP")
 
-write.csv2(sub, "Resultats_deseq2.csv", row.names = FALSE)
+write.csv2(res_df, "Resultats_deseq2.csv", row.names = FALSE)
+#write.csv2(res_df, "res_df.csv", row.names = FALSE)
+#write.csv2(res_exp, "exp.csv", row.names = FALSE)

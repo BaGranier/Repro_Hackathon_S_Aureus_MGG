@@ -137,7 +137,7 @@ process deseq2 {
     input:
     path counts
     path aureo
-    path res_exp
+    file res_exp
     file deseq_script
 
     output:
@@ -175,5 +175,5 @@ workflow {
     fastq_ch = TRIM_ALL_READS(fastq_files)
     bam = ALIGN(fastq_ch, index)
     counts = FEATURECOUNTS(bam.collect(), gff)
-    deseq2(counts, file("data/Aureo_data2.csv"), file("data/GSE139659_IPvsctrl.complete.csv"),  file("data/deseq_fonc5.R") )
+    deseq2(counts, file("data/Aureo_data2.csv"), file("data/GSE139659_IPvsctrl.csv"),  file("data/deseq_fonc6.R") )
 }
