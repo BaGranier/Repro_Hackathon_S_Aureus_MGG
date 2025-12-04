@@ -30,7 +30,7 @@ Reproduire les figures principales de l’article à partir des données publiqu
 
 - Docker
 - Git
-- Architecture AMD64 pour les CPU
+- Architecture Linux/AMD64 pour les CPU
 - Nextflow
 
 ### Installation de Nextflow 
