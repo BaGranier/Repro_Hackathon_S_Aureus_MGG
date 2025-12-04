@@ -26,7 +26,21 @@ L’objectif est de garantir la reproductibilité complète des résultats : mê
 Reproduire les figures principales de l’article à partir des données publiques, dans un environnement **conteneurisé** et **traçable** via Nextflow et Docker.
 
 ---
+## Prérequis : 
 
+- Docker
+- Git
+- Architecture AMD64 pour les CPU
+- Nextflow
+
+### Installation de Nextflow 
+Commandes bash à rentrer si Nextflow n'est pas présent sur la machine : 
+- sudo apt update
+- sudo apt install -y openjdk-21-jdk
+- curl -s https://get.nextflow.io | bash
+- chmod +x nextflow
+- sudo mv nextflow /usr/local/bin/
+- nextflow -version
 
 
 ### Fichiers nécessaires
